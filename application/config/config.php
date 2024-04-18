@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
 //date_default_timezone_set('Asia/Makassar');
 //date_default_timezone_set('Asia/Jayapura');
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -28,14 +29,11 @@ date_default_timezone_set('Asia/Jakarta');
 */
 
 // $config['base_url'] = '';
-// $config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
-// $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
-
+//$config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
+//$config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 $scheme = (isset($_SERVER["HTTPS"]) && @$_SERVER["HTTPS"] == "on") ? "https" : "http";
 $config['base_url'] = "$scheme://".$_SERVER['HTTP_HOST'];
 $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -170,8 +168,7 @@ $config['composer_autoload'] = 'vendor/autoload.php';
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-//$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
 /*
 |--------------------------------------------------------------------------
@@ -236,7 +233,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -394,7 +391,7 @@ $config['encryption_key'] = '498f8140edc311eb94b9c83dd4416dc8';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200 * 12; // 1 jam
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 3000;
 $config['sess_regenerate_destroy'] = FALSE;
