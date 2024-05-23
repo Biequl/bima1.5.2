@@ -16,7 +16,7 @@
 
 <footer class="main-footer-OFF">
     <!--<strong>GarudaCBT</strong> v.<?= config_item('app_version') ?> <!-- old config -->
-    <strong><a href="https://api.whatsapp.com/send?phone=6285641831871">BIMAGarudaCBT</strong> v.<?= APP_VERSION ?></a>
+    <strong><a href="http://www.beetechmedia.my.id">BIMAGarudaCBT</strong> v.<?= APP_VERSION ?></a>
 	<div class="float-right d-none d-sm-inline-block">
     <strong><?=$setting->sekolah ?></strong>
        <!-- <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
