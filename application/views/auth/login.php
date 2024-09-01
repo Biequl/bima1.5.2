@@ -1,3 +1,65 @@
+<?php
+function isMobile() {
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    $isMobile = preg_match('/Mobile|Android|BlackBerry|iPhone|Windows Phone/i', $userAgent);
+    $isExambrowser = preg_match('/ExamBrowser|Exambro/i', $userAgent); // Tambahkan pengecekan user-agent Exambro
+
+    // Jika perangkat mobile dan bukan ExamBrowser
+    if ($isMobile && !$isExambrowser) {
+        return true;
+    }
+
+    return false;
+}
+
+if (isMobile()) {
+    echo '
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobile Access Restricted</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="modal fade" id="mobileModal" tabindex="-1" role="dialog" aria-labelledby="mobileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mobileModalLabel">Akses Ditolak</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Akses dari perangkat mobile tidak diizinkan. Silakan gunakan laptop atau perangkat lain untuk mengakses halaman ini.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="uploads/import/cbtexambro.apk" download>
+                            <button type="button" class="btn btn-primary">Download APK Ujian</button>
+                        </a>
+                        <button type="button" class="btn btn-secondary" onclick="closeWindow()">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#mobileModal").modal("show");
+            });
+
+            function closeWindow() {
+                window.close();
+            }
+        </script>
+    </body>
+    </html>';
+    exit;
+}
+?>
+
 <div class="container">
     <div class="info-box bg-transparent shadow-none">
         <?php
@@ -11,7 +73,7 @@
 					<div class="card form-signin">
 						<div class="login-logo text-white" style="text-shadow: 1px 1px 2px #000000">
 						<br>
-						<img src="<?= $logo_app ?>" width="60" height="60"> 
+						<img src="<?= $logo_app ?>" width="80" height="80"> 
 						<p><b><?= $setting->sekolah ?></b></p>
 					</div>
                     <div class="card-body">
