@@ -4,6 +4,7 @@
              style="height: 400px; background: url('<?= base_url('assets/img/wall2.jpg') ?>')">
         <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
             <div class="row m-0">
+
                     <div class="col-md-2 col-5">
                         <div class="shadow small-box bg-blue">
                             <div class="inner">
@@ -67,6 +68,7 @@
                             </a>
                         </div>
                     </div>
+
             </div>
         </div>
     </section>
@@ -75,112 +77,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-primary my-shadow">
-                        <div class="card-header">
-                            <div class="card-title">
-                                JADWAL HARI INI
-                            </div>
-                            <div class="card-tools">
-                                <a href="<?= base_url('kelasjadwal') ?>" type="button" onclick="" class="btn btn-sm">
-                                    <i class="fa fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="card border-0 shadow-none m-0">
-                                <div class="card-header d-flex p-0">
-                                    <ul class="nav nav-pills p-2">
-                                        <?php
-                                        $no = 1;
-                                        foreach ($kelases as $ky => $kelas) :
-                                            $active = $no == 1 ? 'active' : '';
-                                            ?>
-                                            <li class="nav-item"><a class="nav-link <?= $active ?>"
-                                                                    href="#tab_<?= $ky ?>"
-                                                                    data-toggle="tab"><?= $kelas ?></a></li>
-                                            <?php $no++; endforeach; ?>
-                                    </ul>
-                                </div>
-                                <?php
-                                if (count($jadwals) > 0 && count($kbms) > 0):?>
-                                    <div class="card-body p-0">
-                                        <div class="tab-content">
-                                            <?php
-                                            $no = 1;
-                                            foreach ($kelases as $ky => $kelas) :
-                                                $arrIst = [];
-                                                if (isset($kbms[$ky]->istirahat)) {
-                                                    foreach ($kbms[$ky]->istirahat as $istirahat) {
-                                                        array_push($arrIst, $istirahat['ist']);
-                                                        $arrDur[$istirahat['ist']] = $istirahat['dur'];
-                                                    }
-                                                }
-                                                $active = $no == 1 ? 'active' : '';
-                                                ?>
-                                                <div class="tab-pane <?= $active ?>" id="tab_<?= $ky ?>">
-                                                    <?php if (isset($kbms[$ky])) : ?>
-                                                        <div class="table-responsive">
-                                                            <table class="w-100 table">
-                                                                <tbody>
-                                                                <?php
-                                                                $jamMulai = new DateTime($kbms[$ky]->kbm_jam_mulai);
-                                                                $jamSampai = new DateTime($kbms[$ky]->kbm_jam_mulai);
-                                                                for ($i = 0; $i < $kbms[$ky]->kbm_jml_mapel_hari; $i++) :
-                                                                    $jamke = $i + 1;
-                                                                    if (in_array($jamke, $arrIst)) :
-                                                                        $jamSampai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                                        ?>
-                                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                                            <td class="align-middle" width="150">
-                                                                                <?= $jamMulai->format('H:i') ?>
-                                                                                - <?= $jamSampai->format('H:i') ?>
-                                                                            </td>
-                                                                            <td class="align-middle">ISTIRAHAT</td>
-                                                                        </tr>
-                                                                        <?php
-                                                                        $jamMulai->add(new DateInterval('PT' . $arrDur[$jamke] . 'M'));
-                                                                    else :
-                                                                        $jamSampai->add(new DateInterval('PT' . $kbms[$ky]->kbm_jam_pel . 'M'));
-                                                                        ?>
-                                                                        <tr class="jam" data-jamke="<?= $jamke ?>">
-                                                                            <td class="align-middle">
-                                                                                <?= $jamMulai->format('H:i') ?>
-                                                                                - <?= $jamSampai->format('H:i') ?>
-                                                                            </td>
-                                                                            <td class="align-middle">
-                                                                                <?= $jadwals[$ky][$jamke]->kode != null ? $jadwals[$ky][$jamke]->kode : '--' ?>
-                                                                            </td>
-                                                                        </tr>
 
-                                                                        <?php
-                                                                        $jamMulai->add(new DateInterval('PT' . $kbms[$ky]->kbm_jam_pel . 'M'));
-                                                                    endif;
-                                                                endfor; ?>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <div class="m-4">
-                                                            Jadwal untuk kelas <?= $kelas ?> belum dibuat
-                                                        </div>
-                                                    <?php endif; ?>
-                                                </div>
-                                                <?php $no++; endforeach; ?>
-                                        </div>
-                                    </div>
-                                <?php
-                                else:
-                                    ?>
-                                    <div class="card-body">
-                                        Tidak ada jadwal hari ini
-                                    </div>
-                                <?php
-                                endif;
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
+                    <div class="card card-primary my-shadow">
                         <div class="card-header">
                             <div class="card-title">Aktifitas</div>
                         </div>
