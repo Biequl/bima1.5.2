@@ -3,8 +3,10 @@
 
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong><a href="https://api.whatsapp.com/send?phone=6285641831871">BIMA GarudaCBT</a></strong> v.<?= APP_VERSION ?>
-
+    <strong><a href="http://www.beetechmedia.my.id">BimagarudaCBT</strong> v.<?= APP_VERSION ?>
+    <div class="float-right d-none d-sm-inline-block">
+        <strong><b><?= $setting->sekolah ?></b></strong>
+    </div>
 </footer>
 
 <!-- Control Sidebar -->
