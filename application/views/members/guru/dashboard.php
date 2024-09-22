@@ -1,22 +1,72 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper bg-light">
     <section class="content-header p-0 d-flex align-items-end"
-             style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')">
+             style="height: 400px; background: url('<?= base_url('assets/img/wall2.jpg') ?>')">
         <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
             <div class="row m-0">
-                <?php foreach ($info_box as $info) : ?>
-                    <div class="col-md-2 col-3">
-                        <div class="shadow small-box bg-<?= $info->box ?>">
+                    <div class="col-md-2 col-5">
+                        <div class="shadow small-box bg-blue">
                             <div class="inner">
-                                <h5 class="mb-0"><b><?= $info->total; ?></b></h5>
-                                <span><?= $info->title; ?></span>
+                                <h5 class="mb-0"><b><?= $this->dashboard->total("master_siswa"); ?></b></h5>
+                                 <span>Siswa</span>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-<?= $info->icon ?>" style="font-size:40px; top: 10px"></i>
+                                <i class="fa fa-users" style="top: 5px"></i>
                             </div>
+							
+                           <a href="<?= base_url('datasiswa')?>" class="small-box-footer">
+                               Detail <i class="fa fa-arrow-circle-right"></i>
+                            </a>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                    
+                    <div class="col-md-2 col-5">
+                        <div class="shadow small-box bg-cyan">
+                            <div class="inner">
+                                <h5 class="mb-0"><b><?= $this->dashboard->total("master_kelas"); ?></b></h5>
+                                 <span>Rombel</span>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-bell" style="top: 5px"></i>
+                            </div>
+							
+                           <a href="<?= base_url('datakelas')?>" class="small-box-footer">
+                               Detail <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 col-5">
+                        <div class="shadow small-box bg-yellow">
+                            <div class="inner">
+                                <h5 class="mb-0"><b><?= $this->dashboard->total("master_guru"); ?></b></h5>
+                                 <span>Guru</span>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-users" style="top: 5px"></i>
+                            </div>
+							
+                           <a href="<?= base_url('dataguru')?>" class="small-box-footer">
+                               Detail <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 col-5">
+                        <div class="shadow small-box bg-success">
+                            <div class="inner">
+                                <h5 class="mb-0"><b><?= $this->dashboard->total("master_mapel"); ?></b></h5>
+                                 <span>Mapel</span>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-book" style="top: 5px"></i>
+                            </div>
+							
+                           <a href="<?= base_url('datamapel')?>" class="small-box-footer">
+                               Detail <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
