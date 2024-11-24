@@ -33,7 +33,7 @@ if (isMobile()) {
                         <p>Akses dari perangkat mobile tidak diizinkan. Silakan gunakan laptop atau perangkat lain untuk mengakses halaman ini.</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="uploads/import/cbtexambro.apk" download>
+                        <a href="https://play.google.com/store/apps/details?id=id.argocipta.clientbk" download>
                             <button type="button" class="btn btn-primary">Download APK Ujian</button>
                         </a>
                         <button type="button" class="btn btn-secondary" onclick="closeWindow()">Tutup</button>
